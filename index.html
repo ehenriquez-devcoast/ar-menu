@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
+        <script src="./scripts/detect-target.js"></script>
+        <script src="./scripts/tap-model.js"></script>
+        <script src="./scripts/tap-frasco.js"></script>
+    </head>
+
+    <body>
+        <!-- xrextras-gesture-detector mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0"  -->
+        <!-- inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"  -->
+        <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        
+        <!-- Assets -->
+        <a-assets>
+
+            <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+            
+            <!-- BOTONES 3D -->
+            <a-asset-item id="multivit-combinacion-glb" src="./assets/models/Icon_multivit_pote.glb"></a-asset-item>
+            <a-asset-item id="complejo-combinacion-glb" src="./assets/models/Icon_complejoB_pote.glb"></a-asset-item>
+            <a-asset-item id="calcio-combinacion-glb" src="./assets/models/Icon_calcio_huesos.glb"></a-asset-item>
+            
+            <a-asset-item id="multivit-capsulas-glb" src="./assets/models/Icon_multivit_Pildora_01.glb"></a-asset-item>
+            <a-asset-item id="complejo-capsulas-glb" src="./assets/models/Icon_complejoB_letras.glb"></a-asset-item>
+            <a-asset-item id="calcio-capsulas-glb" src="./assets/models/Icon_calcio_pote.glb"></a-asset-item>
+            
+            <a-asset-item id="multivit-rutina-glb" src="./assets/models/Icon_multivit_rayo.glb"></a-asset-item>
+            <a-asset-item id="complejo-rutina-glb" src="./assets/models/Icon_complejoB_hombrecirculo.glb"></a-asset-item>
+            <a-asset-item id="calcio-rutina-glb" src="./assets/models/Icon_calcio_calendario.glb"></a-asset-item>
+            
+            <a-asset-item id="multivit-video-glb" src="./assets/models/Icon_multivit_video.glb"></a-asset-item>
+            <a-asset-item id="complejo-video-glb" src="./assets/models/Icon_complejoB_video.glb"></a-asset-item>
+            <a-asset-item id="calcio-video-glb" src="./assets/models/Icon_calcio_video.glb"></a-asset-item>
+            
+
+            <!-- MULTIVIT -->
+            <img id="marco-multivit" src="./assets/images/Marco-Multivit.png">
+            <!-- <img id="multivit-thumb" src="./assets/images/multivit-thumb.jpg"> -->
+            <video
+                id="multivit-video"
+                crossorigin="anonymous"
+                webkit-playsinline playsinline
+                loop="false"
+                controls
+                src="./assets/images/Cupcake.mp4">
+            </video>
+            <img id="multivit-combinacion" src="./assets/images/Multivit-Combinacion.png">
+            <img id="multivit-capsulas" src="./assets/images/Multivit-Capsulas.png">
+            <img id="multivit-rutina" src="./assets/images/Multivit-Rutina.png">
+            <a-asset-item id="multivit-frasco-glb" src="./assets/models/extra_chocolate_marshmallow_cupcake.glb"></a-asset-item>
+
+
+            <!-- CALCIO -->
+            <img id="marco-calcio" src="./assets/images/Marco-Calcio.png">
+            <!-- <img id="calcio-thumb" src="./assets/images/calcio-thumb.jpg"> -->
+            <video
+                id="calcio-video"
+                crossorigin="anonymous"
+                webkit-playsinline playsinline
+                loop="false"
+                controls
+                src="./assets/images/pan.mp4">
+            </video>
+            <img id="calcio-combinacion" src="./assets/images/Calcio-Combinacion.png">
+            <img id="calcio-capsulas" src="./assets/images/Calcio-Capsulas.png">
+            <img id="calcio-rutina" src="./assets/images/Calcio-Rutina.png">
+            <a-asset-item id="calcio-frasco-glb" src="./assets/models/bread_roll.glb"></a-asset-item>
+
+
+            <!-- COMPLEJO B -->
+            <img id="marco-complejob" src="./assets/images/Marco-ComplejoB.png">
+            <!-- <img id="complejob-thumb" src="./assets/images/complejo-b-thumb.jpg"> -->
+            <video
+                id="complejob-video"
+                crossorigin="anonymous"
+                webkit-playsinline playsinline
+                loop="false"
+                controls
+                src="./assets/images/subway.mp4">
+            </video>
+            <img id="complejo-combinacion" src="./assets/images/Complejo-Combinacion.png">
+            <img id="complejo-capsulas" src="./assets/images/Complejo-Capsulas.png">
+            <img id="complejo-rutina" src="./assets/images/Complejo-Rutina.png">
+            <a-asset-item id="complejob-frasco-glb" src="./assets/models/subway.glb"></a-asset-item>
+
+
+            <!-- OTROS -->
+            <img id="formula-completa" src="./assets/images/Formula-completa.png">
+            <img id="tecnologia" src="./assets/images/Tecnologia.png">
+            <img id="beneficios" src="./assets/images/Beneficios.png">
+            <img id="rutina" src="./assets/images/Rutina.png">
+            <img id="conoce-mas" src="./assets/images/Conoce-mas.png">
+            <a-asset-item id="flechas-glb" src="./assets/models/flechas.glb"></a-asset-item>
+
+            <img id="close-circle" src="./assets/images/close-circle.png">
+
+        </a-assets>
+  
+        <!-- Camara -->
+        <a-camera position="0 1 11" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
+
+        <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>
+
+        <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
+      
+        <a-light type="ambient" intensity="0.7"></a-light>
+
+        <a-image id="close-btn" class="clickable" src="#close-circle" scale="0 0 0" position="2.5 3 -1"></a-image>
+
+        <!-- ============================ TARGETS ============================ -->
+
+        <!-- CALCIO -->
+        <!-- <a-image src="#marco-calcio" position="0 2.5 0" height="1" width="3" rotation="0 0 0"></a-image> -->
+        
+        <!-- <a-entity id="calcio-frasco-0" class="clickable" tap-frasco="frasco: calcio-frasco-0; target:0;" rotation="0 0 0 " position="0 0 0.1" scale="3 3 1" gltf-model="#calcio-frasco-glb" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
+        <a-entity id="multivit-frasco-0" class="clickable" tap-frasco="frasco: multivit-frasco-0; target:0;" rotation="0 0 0 " position="-1 0 0" scale="3 3 1" gltf-model="#multivit-frasco-glb" animation="property: position; to: -1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
+        <a-entity id="complejob-frasco-0" class="clickable" tap-frasco="frasco: complejob-frasco-0; target:0;" rotation="0 0 0 " position="1 0 0" scale="3 3 1" gltf-model="#complejob-frasco-glb" animation="property: position; to: 1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity> -->
+        <a-entity id="calcio-target" mindar-image-target="targetIndex: 0">
+        </a-entity>
+
+        <!-- MULTIVIT -->
+        <a-entity id="multivit-target" mindar-image-target="targetIndex: 1">
+            <!-- <a-image src="#marco-multivit" position="0 1 0" height="0.552" width="1" rotation="0 0 0"></a-image>
+            <a-entity id="multivit-frasco-1" class="clickable" tap-frasco="frasco: multivit-frasco-1; target:1;" rotation="0 0 0" position="0 0 0.1" scale="3 3 3" gltf-model="#multivit-frasco-glb" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
+            <a-entity id="calcio-frasco-1" class="clickable" tap-frasco="frasco: calcio-frasco-1; target:1;" rotation="0 0 0 " position="-1 0 0" scale="3 3 3" gltf-model="#calcio-frasco-glb" animation="property: position; to: -1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
+            <a-entity id="complejob-frasco-1" class="clickable" tap-frasco="frasco: complejob-frasco-1; target:1;" rotation="0 0 0 " position="1 0 0" scale="3 3 3" gltf-model="#complejob-frasco-glb" animation="property: position; to: 1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity> -->
+        </a-entity>
+
+        <!-- COMPLEJO B -->
+        <a-entity id="complejob-target" mindar-image-target="targetIndex: 2">
+            <!-- <a-image src="#marco-complejob" position="0 1 0" height="0.552" width="1" rotation="0 0 0"></a-image>
+            <a-entity id="complejob-frasco-2" class="clickable" tap-frasco="frasco: complejob-frasco-2; target:2;" rotation="0 0 0 " position="0 0 0.1" scale="3 3 3" gltf-model="#complejob-frasco-glb" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
+            <a-entity id="calcio-frasco-2" class="clickable" tap-frasco="frasco: calcio-frasco-2; target:2;" rotation="0 0 0 " position="-1 0 0" scale="3 3 3" gltf-model="#calcio-frasco-glb" animation="property: position; to: -1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
+            <a-entity id="multivit-frasco-2" class="clickable" tap-frasco="frasco: multivit-frasco-2; target:2;" rotation="0 0 0 " position="1 0 0" scale="3 3 3" gltf-model="#multivit-frasco-glb" animation="property: position; to: 0.5 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity> -->
+        </a-entity>
+      </a-scene>
+
+      <!-- =================================================================== -->
+        <script>
+            document.querySelector('#close-btn').addEventListener('click', function() {
+                document.location.reload();
+            });
+        </script>
+
+    </body>
+
+    
+    
+
+  </html>
