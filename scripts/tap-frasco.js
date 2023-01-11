@@ -216,10 +216,10 @@ AFRAME.registerComponent('tap-frasco', {
                 // console.log('clicked calcio')
 
                 Frasco.setAttribute("class","notClickable")
-                Frasco.setAttribute("position","0 0 0")
+                Frasco.setAttribute("position","0 0.383 0")
                 Frasco.setAttribute('animation', {
                     property: 'position',
-                    to: '0 0 0',
+                    to: '0 0.383 0',
                     easing: 'easeOutQuad',
                     dur: 500,
                 });
@@ -413,10 +413,10 @@ AFRAME.registerComponent('tap-frasco', {
             else if (this.data.frasco === ('complejob-frasco-' + this.data.target)) {
 
                 Frasco.setAttribute("class","notClickable")
-                Frasco.setAttribute("position","0 0 0")
+                Frasco.setAttribute("position","0.435 0.326 0")
                 Frasco.setAttribute('animation', {
                     property: 'position',
-                    to: '0 0 0',
+                    to: '0.435 0.326 0',
                     easing: 'easeOutQuad',
                     dur: 500,
                 });
