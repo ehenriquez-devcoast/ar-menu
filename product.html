@@ -11,7 +11,7 @@
     <body>
         <!-- xrextras-gesture-detector mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0"  -->
         <!-- inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"  -->
-        <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: true" device-orientation-permission-ui="enabled: false">
+        <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         
         <!-- Assets -->
         <a-assets>
@@ -100,7 +100,7 @@
         </a-assets>
   
         <!-- Camara -->
-        <a-camera position="0 1 11" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
+        <a-camera position="0 1 11" look-controls="enabled: true" wasd-controls="enabled: false"></a-camera>
 
         <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>
 
@@ -123,7 +123,7 @@
       <!-- =================================================================== -->
         <script>
             document.querySelector('#close-btn').addEventListener('click', function() {
-                document.location.href = '/index.html';
+                document.location.href = './index.html';
             });
         </script>
 
