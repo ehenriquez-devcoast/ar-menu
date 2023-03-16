@@ -1,136 +1,219 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
-        <script src="./scripts/detect-target.js"></script>
-        <script src="./scripts/tap-model.js"></script>
-        <script src="./scripts/tap-frasco.js"></script>
+        <title>DevCoast Menu AR</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+        <style>
+            body, html {height: 100%}
+            body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+            .menu {display: none}
+            .bgimg {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url("https://www.w3schools.com/w3images/pizza.jpg");
+                min-height: 90%;
+            }
+            div.Boton{
+                cursor: pointer;
+                padding: 6px;
+            }
+            div.Boton:hover{
+                background-color: blanchedalmond;
+            }
+        </style>
     </head>
 
     <body>
-        <!-- xrextras-gesture-detector mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0"  -->
-        <!-- inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"  -->
-        <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; filterMinCF: 1; filterBeta: 10000; warmupTolerance: 0; missTolerance: 0; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top w3-hide-small">
+            <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
+                <a href="#" class="w3-bar-item w3-button">HOME</a>
+                <a href="#menu" class="w3-bar-item w3-button">MENU</a>
+                <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+                <a href="#myMap" class="w3-bar-item w3-button">CONTACT</a>
+            </div>
+        </div>
         
-        <!-- Assets -->
-        <a-assets>
+        <!-- Header with image -->
+        <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-bottomleft w3-padding">
+            <span class="w3-tag w3-xlarge">Open from 10am to 12pm</span>
+        </div>
+        <div class="w3-display-middle w3-center">
+            <span class="w3-text-white w3-hide-small" style="font-size:100px">thin<br>CRUST PIZZA</span>
+            <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b>thin<br>CRUST PIZZA</b></span>
+            <p><a href="#menu" class="w3-button w3-xxlarge w3-black">Let me see the menu</a></p>
+        </div>
+        </header>
 
-            <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+        <!-- Menu Container -->
+        <div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+            <div class="w3-content">
             
-            <!-- BOTONES 3D -->
-            <a-asset-item id="multivit-combinacion-glb" src="./assets/models/Icon_multivit_pote.glb"></a-asset-item>
-            <a-asset-item id="complejo-combinacion-glb" src="./assets/models/Icon_complejoB_pote.glb"></a-asset-item>
-            <a-asset-item id="calcio-combinacion-glb" src="./assets/models/Icon_calcio_huesos.glb"></a-asset-item>
-            
-            <a-asset-item id="multivit-capsulas-glb" src="./assets/models/Icon_multivit_Pildora_01.glb"></a-asset-item>
-            <a-asset-item id="complejo-capsulas-glb" src="./assets/models/Icon_complejoB_letras.glb"></a-asset-item>
-            <a-asset-item id="calcio-capsulas-glb" src="./assets/models/Icon_calcio_pote.glb"></a-asset-item>
-            
-            <a-asset-item id="multivit-rutina-glb" src="./assets/models/Icon_multivit_rayo.glb"></a-asset-item>
-            <a-asset-item id="complejo-rutina-glb" src="./assets/models/Icon_complejoB_hombrecirculo.glb"></a-asset-item>
-            <a-asset-item id="calcio-rutina-glb" src="./assets/models/Icon_calcio_calendario.glb"></a-asset-item>
-            
-            <a-asset-item id="multivit-video-glb" src="./assets/models/Icon_multivit_video.glb"></a-asset-item>
-            <a-asset-item id="complejo-video-glb" src="./assets/models/Icon_complejoB_video.glb"></a-asset-item>
-            <a-asset-item id="calcio-video-glb" src="./assets/models/Icon_calcio_video.glb"></a-asset-item>
-            
+                <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">THE MENU</h1>
+                <div class="w3-row w3-center w3-border w3-border-dark-grey">
+                    <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');" id="myLink">
+                        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pizza</div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="openMenu(event, 'Pasta');">
+                        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Salads</div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="openMenu(event, 'Starter');">
+                        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Starter</div>
+                    </a>
+                </div>
 
-            <!-- MULTIVIT -->
-            <img id="marco-multivit" src="./assets/images/Marco-Multivit.png">
-            <!-- <img id="multivit-thumb" src="./assets/images/multivit-thumb.jpg"> -->
-            <video
-                id="multivit-video"
-                crossorigin="anonymous"
-                webkit-playsinline playsinline
-                loop="false"
-                controls
-                src="./assets/images/Cupcake.mp4">
-            </video>
-            <img id="multivit-combinacion" src="./assets/images/Multivit-Combinacion.png">
-            <img id="multivit-capsulas" src="./assets/images/Multivit-Capsulas.png">
-            <img id="multivit-rutina" src="./assets/images/Multivit-Rutina.png">
-            <a-asset-item id="multivit-frasco-glb" src="./assets/models/extra_chocolate_marshmallow_cupcake.glb"></a-asset-item>
+                <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+                    <div class="Boton" onclick="location.href='/product.html?id=1'">
+                        <h1><b>Pan de 500</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
+                        <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
+                    </div>
+                    <hr>
+                
+                    <div class="Boton" onclick="location.href='/product.html?id=2'">
+                        <h1><b>Cupcacke</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
+                        <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
+                    </div>
+                    <hr>
+                    
+                    <div class="Boton" onclick="location.href='/product.html?id=3'">
+                        <h1><b>Subway</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span></h1>
+                        <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
+                    </div>
+                    <hr>
+
+                    <h1><b>Pineapple'o'clock</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$16.50</span></h1>
+                    <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
+                    <hr>
+
+                    <h1><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span><span class="w3-right w3-tag w3-dark-grey w3-round">$20.00</span></h1>
+                    <p class="w3-text-grey">Fresh tomatoes, mozzarella, hot pepporoni, hot sausage, beef, chicken</p>
+                    <hr>
+
+                    <h1><b>Parma</b> <span class="w3-tag w3-grey w3-round">New</span><span class="w3-right w3-tag w3-dark-grey w3-round">$21.50</span></h1>
+                    <p class="w3-text-grey">Fresh tomatoes, mozzarella, parma, bacon, fresh arugula</p>
+                </div>
+
+                <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
+                    <div class="Boton" onclick="location.href='/product.html?id=1'">
+                        <h1><b>Pan de 500</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
+                        <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
+                    </div>
+                    <hr>
+                
+                    <div class="Boton" onclick="location.href='/product.html?id=2'">
+                        <h1><b>Cupcacke</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
+                        <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
+                    </div>
+                    <hr>
+                    
+                    <div class="Boton" onclick="location.href='/product.html?id=3'">
+                        <h1><b>Subway</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span></h1>
+                        <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
+                    </div>
+                    <hr>
+
+                    <h1><b>Seafood pasta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$25.50</span></h1>
+                    <p class="w3-text-grey">Salmon, shrimp, lobster, garlic</p>
+                </div>
 
 
-            <!-- CALCIO -->
-            <img id="marco-calcio" src="./assets/images/Marco-Calcio.png">
-            <!-- <img id="calcio-thumb" src="./assets/images/calcio-thumb.jpg"> -->
-            <video
-                id="calcio-video"
-                crossorigin="anonymous"
-                webkit-playsinline playsinline
-                loop="false"
-                controls
-                src="./assets/images/pan.mp4">
-            </video>
-            <img id="calcio-combinacion" src="./assets/images/Calcio-Combinacion.png">
-            <img id="calcio-capsulas" src="./assets/images/Calcio-Capsulas.png">
-            <img id="calcio-rutina" src="./assets/images/Calcio-Rutina.png">
-            <a-asset-item id="calcio-frasco-glb" src="./assets/models/bread_roll.glb"></a-asset-item>
+                <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
+                    <div class="Boton" onclick="location.href='/product.html?id=1'">
+                        <h1><b>Pan de 500</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
+                        <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
+                    </div>
+                    <hr>
+                
+                    <div class="Boton" onclick="location.href='/product.html?id=2'">
+                        <h1><b>Cupcacke</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
+                        <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
+                    </div>
+                    <hr>
+                    
+                    <div class="Boton" onclick="location.href='/product.html?id=3'">
+                        <h1><b>Subway</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span></h1>
+                        <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
+                    </div>
+                    <hr>
+                    
+                    <h1><b>Tomozzarella</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$10.50</span></h1>
+                    <p class="w3-text-grey">Tomatoes and mozzarella</p>
+                </div>
+                <br>
 
+            </div>
+        </div>
 
-            <!-- COMPLEJO B -->
-            <img id="marco-complejob" src="./assets/images/Marco-ComplejoB.png">
-            <!-- <img id="complejob-thumb" src="./assets/images/complejo-b-thumb.jpg"> -->
-            <video
-                id="complejob-video"
-                crossorigin="anonymous"
-                webkit-playsinline playsinline
-                loop="false"
-                controls
-                src="./assets/images/subway.mp4">
-            </video>
-            <img id="complejo-combinacion" src="./assets/images/Complejo-Combinacion.png">
-            <img id="complejo-capsulas" src="./assets/images/Complejo-Capsulas.png">
-            <img id="complejo-rutina" src="./assets/images/Complejo-Rutina.png">
-            <a-asset-item id="complejob-frasco-glb" src="./assets/models/subway.glb"></a-asset-item>
+        <!-- About Container -->
+        <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="about">
+            <div class="w3-content">
+                <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">About</h1>
+                <p>The Pizza Restaurant was founded in blabla by Mr. Italiano in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p><strong>The Chef?</strong> Mr. Italiano himself<img src="https://www.w3schools.com/w3images/chef.jpg" style="width:150px" class="w3-circle w3-right" alt="Chef"></p>
+                <p>We are proud of our interiors.</p>
+                <img src="https://www.w3schools.com/w3images/onepage_restaurant.jpg" style="width:100%" class="w3-margin-top w3-margin-bottom" alt="Restaurant">
+                <h1><b>Opening Hours</b></h1>
+                
+                <div class="w3-row">
+                    <div class="w3-col s6">
+                        <p>Mon & Tue CLOSED</p>
+                        <p>Wednesday 10.00 - 24.00</p>
+                        <p>Thursday 10:00 - 24:00</p>
+                    </div>
+                    <div class="w3-col s6">
+                        <p>Friday 10:00 - 12:00</p>
+                        <p>Saturday 10:00 - 23:00</p>
+                        <p>Sunday Closed</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
 
+        <!-- Contact -->
+        <div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge">
+            <div class="w3-content">
+                <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Contact</h1>
+                <p>Find us at some address at some place or call us at 05050515-122330</p>
+                <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
+                <p class="w3-xxlarge"><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+                <form action="/action_page.php" target="_blank">
+                <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+                <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
+                <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+                <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+                <p><button class="w3-button w3-light-grey w3-block" type="submit">SEND MESSAGE</button></p>
+                </form>
+            </div>
+        </div>
 
-            <!-- OTROS -->
-            <img id="formula-completa" src="./assets/images/Formula-completa.png">
-            <img id="tecnologia" src="./assets/images/Tecnologia.png">
-            <img id="beneficios" src="./assets/images/Beneficios.png">
-            <img id="rutina" src="./assets/images/Rutina.png">
-            <img id="conoce-mas" src="./assets/images/Conoce-mas.png">
-            <a-asset-item id="flechas-glb" src="./assets/models/flechas.glb"></a-asset-item>
+        <!-- Footer -->
+        <footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+            <p>Powered by DevCoast</p>
+        </footer>
 
-            <img id="close-circle" src="./assets/images/close-circle.png">
-
-        </a-assets>
-  
-        <!-- Camara -->
-        <a-camera position="0 1 11" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
-
-        <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>
-
-        <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
-      
-        <a-light type="ambient" intensity="0.7"></a-light>
-
-        <a-image id="close-btn" class="clickable" src="#close-circle" scale="0 0 0" position="2.5 3 -1"></a-image>
-
-        <!-- ============================ TARGETS ============================ -->
-
-        <!-- CALCIO -->
-        <!-- <a-image src="#marco-calcio" position="0 2.5 0" height="1" width="3" rotation="0 0 0"></a-image> -->
-        
-        <!-- <a-entity id="calcio-frasco-0" class="clickable" tap-frasco="frasco: calcio-frasco-0; target:0;" rotation="0 0 0 " position="0 0 0.1" scale="3 3 1" gltf-model="#calcio-frasco-glb" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
-        <a-entity id="multivit-frasco-0" class="clickable" tap-frasco="frasco: multivit-frasco-0; target:0;" rotation="0 0 0 " position="-1 0 0" scale="3 3 1" gltf-model="#multivit-frasco-glb" animation="property: position; to: -1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity>
-        <a-entity id="complejob-frasco-0" class="clickable" tap-frasco="frasco: complejob-frasco-0; target:0;" rotation="0 0 0 " position="1 0 0" scale="3 3 1" gltf-model="#complejob-frasco-glb" animation="property: position; to: 1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-entity> -->
-      </a-scene>
-
-      <!-- =================================================================== -->
         <script>
-            document.querySelector('#close-btn').addEventListener('click', function() {
-                document.location.reload();
-            });
+            // Tabbed Menu
+            function openMenu(evt, menuName) {
+                var i, x, tablinks;
+                x = document.getElementsByClassName("menu");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < x.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+                }
+                document.getElementById(menuName).style.display = "block";
+                evt.currentTarget.firstElementChild.className += " w3-red";
+            }
+            document.getElementById("myLink").click();
         </script>
 
     </body>
-
-    
-    
-
-  </html>
+</html>
