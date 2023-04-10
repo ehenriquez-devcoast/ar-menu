@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
         CalcioFrasco.setAttribute("id", "calcio-frasco-0")
         CalcioFrasco.setAttribute("class", "notClickable")
         CalcioFrasco.setAttribute("tap-frasco", "frasco: calcio-frasco-0; target:0;")
-        CalcioFrasco.setAttribute("position", "-1 1 0")
+        CalcioFrasco.setAttribute("position", "-3.5 1 0")
         CalcioFrasco.setAttribute("rotation", "25.000 1.790 0")
-        CalcioFrasco.setAttribute("scale", "3 3 3")
+        CalcioFrasco.setAttribute("scale", "10 10 10")
         CalcioFrasco.setAttribute("gltf-model", "#calcio-frasco-glb")
         // CalcioFrasco.setAttribute("animation", "property: position; to: 0 0.483 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate")
     
@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function() {
         MultivitFrasco.setAttribute("id", "multivit-frasco-0")
         MultivitFrasco.setAttribute("class", "notClickable")
         MultivitFrasco.setAttribute("tap-frasco", "frasco: multivit-frasco-0; target:0;")
-        MultivitFrasco.setAttribute("position", "0 1 0")
+        MultivitFrasco.setAttribute("position", "0.8 1 -1")
         MultivitFrasco.setAttribute("rotation", "25 0 0")
-        MultivitFrasco.setAttribute("scale", "3 3 3")
+        MultivitFrasco.setAttribute("scale", "10 10 10")
         MultivitFrasco.setAttribute("gltf-model", "#multivit-frasco-glb")
         // MultivitFrasco.setAttribute("animation", "property: position; to: -1 0.1 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate")
     
@@ -57,10 +57,24 @@ document.addEventListener("DOMContentLoaded", function() {
         ComplejoFrasco.setAttribute("id", "complejob-frasco-0")
         ComplejoFrasco.setAttribute("class", "notClickable")
         ComplejoFrasco.setAttribute("tap-frasco", "frasco: complejob-frasco-0; target:0;")
-        ComplejoFrasco.setAttribute("position", "0 1 0")
+        ComplejoFrasco.setAttribute("position", "0.5 0.8 -0.5")
         ComplejoFrasco.setAttribute("rotation", "25 0 0")
-        ComplejoFrasco.setAttribute("scale", "3 3 3")
+        ComplejoFrasco.setAttribute("scale", "10 10 10")
         ComplejoFrasco.setAttribute("gltf-model", "#complejob-frasco-glb")
+        // ComplejoFrasco.setAttribute("animation", "property: position; to: 1.435 0.426 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate")
+    
+        sceneEl.appendChild(ComplejoFrasco);
+    }
+    else if(id == 4){
+        let ComplejoFrasco = document.createElement('a-entity');
+                        
+        ComplejoFrasco.setAttribute("id", "complejob-frasco-0")
+        ComplejoFrasco.setAttribute("class", "notClickable")
+        ComplejoFrasco.setAttribute("tap-frasco", "frasco: complejob-frasco-0; target:0;")
+        ComplejoFrasco.setAttribute("position", "0.3 1 -1")
+        ComplejoFrasco.setAttribute("rotation", "25.000 0 0")
+        ComplejoFrasco.setAttribute("scale", "10 10 10")
+        ComplejoFrasco.setAttribute("gltf-model", "#rollitos-glb")
         // ComplejoFrasco.setAttribute("animation", "property: position; to: 1.435 0.426 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate")
     
         sceneEl.appendChild(ComplejoFrasco);
